@@ -3,11 +3,12 @@
     <div>
       <logo />
       <h1 class="title">
-        Nuxt.js on AWS Lambda
+        Nuxt.js on AWS Lambd
       </h1>
       <h2 class="subtitle">
         Nuxt.js project
       </h2>
+
       <p>Nuxt.js version: {{ nuxtVersion }}</p>
       <p>Build Node.js version: {{ buildNodeVersion }}</p>
       <p>Server Node.js version: {{ serverNodeVersion }}</p>
@@ -17,26 +18,29 @@
         </nuxt-link>
       </div>
     </div>
+
   </section>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue';
-import { version as nuxtVersion } from 'nuxt/package.json';
+import Logo from "~/components/Logo.vue";
+import { version as nuxtVersion } from "nuxt/package.json";
+import { mapMutations } from "vuex";
+import { mapGetters } from "vuex";
 
 export default {
   components: {
-    Logo,
+    Logo
   },
 
   asyncData() {
     // If you want to keep version on the client side, use the store.
     const serverNodeVersion = process.server
       ? process.versions.node
-      : 'unknown';
+      : "unknown";
 
     return {
-      serverNodeVersion,
+      serverNodeVersion
     };
   },
 
@@ -44,6 +48,10 @@ export default {
     nuxtVersion: () => nuxtVersion,
     buildNodeVersion: () => process.env.NODE_VERSION,
   },
+
+  methods: {
+
+  }
 };
 </script>
 
@@ -57,8 +65,8 @@ export default {
 }
 
 .title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; /* 1 */
+  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* 1 */
   display: block;
   font-weight: 300;
   font-size: 100px;
